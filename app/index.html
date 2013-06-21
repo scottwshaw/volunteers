@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en" ng-app>
+<head>
+  <meta charset="utf-8">
+  <title>Volunteers</title>
+  <link rel="stylesheet" href="css/app.css">
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <script src="lib/angular/angular.js"></script>
+  <script src="lib/ui-utils.js"></script>
+  <script src=" js/controllers.js"></script>
+</head>
+<body ng-controller="ActivityCtrl">
+  <table>
+    <tr><th>Activity Name</th></tr>
+    <tr ng-repeat="activity in activities">
+      <td>{{activity.name}}</td>
+    </tr>
+  </table>
+  <form ng-submit="addActivity()">
+    <input ng-model="newActivity" placeholder="New Activity" ui-keypress="{13:'addActivity($event)'}"/>
+    <!-- <input type="submit" style="height: 0px; width: 0px; border: none; padding: 0px;" hidefocus="true" /> -->
+  </form>
+</body>
+</html>
