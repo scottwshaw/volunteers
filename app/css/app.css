@@ -1,1 +1,5 @@
 /* app css stylesheet */
+
+li.activity:hover {
+    background-color: #f5f5f5;
+}

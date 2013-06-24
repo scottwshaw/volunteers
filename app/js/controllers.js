@@ -1,5 +1,5 @@
 'use strict';
-
+angular.module('volunteers',['ui.bootstrap']);
 /* Controllers */
 function ActivityCtrl($scope) {
     $scope.activities = [
@@ -10,5 +10,8 @@ function ActivityCtrl($scope) {
     $scope.addActivity = function() {
     	$scope.activities.push({"name": $scope.newActivity});
 	$scope.newActivity = "";
+    };
+    $scope.removeActivity = function(activityIndex) {
+	$scope.activities.splice(activityIndex, 1);
     };
 }

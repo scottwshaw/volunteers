@@ -1,24 +1,25 @@
 <!doctype html>
-<html lang="en" ng-app>
+<html lang="en" ng-app="volunteers">
 <head>
   <meta charset="utf-8">
   <title>Volunteers</title>
   <link rel="stylesheet" href="css/app.css">
   <link rel="stylesheet" href="css/bootstrap.css">
   <script src="lib/angular/angular.js"></script>
-  <script src="lib/ui-utils.js"></script>
+  <script src="lib/components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
   <script src=" js/controllers.js"></script>
 </head>
-<body ng-controller="ActivityCtrl">
-  <table>
-    <tr><th>Activity Name</th></tr>
-    <tr ng-repeat="activity in activities">
-      <td>{{activity.name}}</td>
-    </tr>
-  </table>
-  <form ng-submit="addActivity()">
-    <input ng-model="newActivity" placeholder="New Activity" ui-keypress="{13:'addActivity($event)'}"/>
-    <!-- <input type="submit" style="height: 0px; width: 0px; border: none; padding: 0px;" hidefocus="true" /> -->
-  </form>
+<body>
+  <div class="span2" ng-controller="ActivityCtrl">
+    <h2>Activities</h2>
+    <ul class="unstyled">
+      <li class="activity" ng-repeat="activity in activities">{{activity.name}}
+        <i ng-click="removeActivity($index)" class="icon-remove pull-right" tooltip="delete {{activity.name}}" tooltip-placement="right" tooltip-trigger="mouseenter"></i>
+      </li>
+    </ul>
+    <form ng-submit="addActivity()">
+      <input ng-model="newActivity" placeholder="New Activity"/>
+    </form>
+  </div>
 </body>
 </html>

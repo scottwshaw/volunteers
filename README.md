@@ -1,8 +1,8 @@
-# Fair Volunteer Website based on angular-seed project
+# Fair Volunteer Website
 
 ## Overview
 
-
+This app is based on the angular-seed project.
 
 
 ## Prerequisites
