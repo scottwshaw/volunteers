@@ -15,7 +15,7 @@
     <p class="muted">(click to see details)</p>
     <ul class="unstyled">
       <li class="activity" ng-repeat="activity in activities">
-        <a href="#" ng-click="open(activity)">{{activity.name}}</a>
+        <a ng-click="open(activity)">{{activity.name}}</a>
         <i ng-click="removeActivity($index)" 
            class="icon-remove pull-right" 
            tooltip="delete {{activity.name}}" 
@@ -27,7 +27,7 @@
       <input ng-model="newActivity" placeholder="New Activity"/>
     </form>
 
-    <div modal="shouldBeOpen" close="close()" options="opts" ng-controller="ActivityDetailCtrl">
+    <div modal="shouldBeOpen" close="close()" options="opts">
       <div class="modal-header">
         <h4>{{modalactivity.name}}</h4>
       </div>
