@@ -7,39 +7,10 @@
   <link rel="stylesheet" href="css/bootstrap.css">
   <script src="lib/angular/angular.js"></script>
   <script src="lib/components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+  <script src=" js/app.js"></script>`
   <script src=" js/controllers.js"></script>
 </head>
 <body>
-  <div class="span2" ng-controller="ActivityCtrl">
-    <h3>Activities</h3>
-    <p class="muted">(click to see details)</p>
-    <ul class="unstyled">
-      <li class="activity" ng-repeat="activity in activities">
-        <a ng-click="open(activity)">{{activity.name}}</a>
-        <i ng-click="removeActivity($index)" 
-           class="icon-remove pull-right" 
-           tooltip="delete {{activity.name}}" 
-           tooltip-placement="right" 
-           tooltip-trigger="mouseenter"></i>
-      </li>
-    </ul>
-    <form ng-submit="addActivity()">
-      <input ng-model="newActivity" placeholder="New Activity"/>
-    </form>
-
-    <div modal="shouldBeOpen" close="close()" options="opts">
-      <div class="modal-header">
-        <h4>{{modalactivity.name}}</h4>
-      </div>
-      <div class="modal-body">
-        <dl>
-          <dt>Owner</dt>
-          <dd>{{modalactivity.owner.name}}</dd>
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-warning cancel" ng-click="close()">Close</button>
-      </div>
-    </div>
-  </div>
+  <div ng-view></div>
 </body>
 </html>

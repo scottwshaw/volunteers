@@ -1,9 +1,7 @@
 'use strict';
-angular.module('volunteers',['ui.bootstrap']);
-
 /* Controllers */
-function ActivityCtrl($scope) {
-    $scope.activities = [
+function ActivityCtrl($scope, $rootScope) {
+    $rootScope.activities = [
 	{"name": "Jaffle Smash", "owner": {"name": "Geoff", "email": "geoff@somewhere.com"}},
 	{"name": "Curries", "owner": {"name": "Lisa"}},
 	{"name": "Corn on the cob", "owner": {"name": "Shane", "phone": "0414653576"}}
@@ -31,4 +29,16 @@ function ActivityCtrl($scope) {
 	dialogFade:true
     };
 
+};
+
+function ActivityDetailCtrl($scope, $rootScope, $routeParams) {
+    $scope.editing = false;
+    $scope.activity = $rootScope.activities[$routeParams.activityIndex];
+    $scope.edit = function() {
+	$scope.editing = true;
+    };
+    $scope.save = function() {
+	$rootScope.activities[$routeParams.activityIndex] = $scope.activity;
+	$scope.editing = false;
+    };
 };
