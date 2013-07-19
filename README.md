@@ -2,10 +2,14 @@
 
 ## Overview
 
-This app is based on the angular-seed project.
+This app is based on the angular-seed project but has been heavily modified since
 
 
 ## Prerequisites
+
+Need to have bower installed
+
+Before you can run the app you must run "bower install" in the root directory
 
 ### Node.js
 - Generic [installation instructions][node-generic].
