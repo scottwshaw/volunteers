@@ -1,0 +1,22 @@
+<div class="container-fluid">
+  <div class="span2 offset2">
+    <h3>Activities</h3>
+    <p class="muted">(click to view or edit)</p>
+    <ul class="unstyled">
+      <li class="activity" ng-repeat="activity in activities">
+        <a href="#/activities/{{$index}}"
+	   popover="Owner: {{activity.owner.name}} {{activity.owner.phone}} {{activity.owner.email}}" 
+	   popover-placement="right" 
+	   popover-trigger="mouseenter">{{activity.name}}</a>
+        <i ng-click="removeActivity($index)" 
+           class="icon-remove pull-right" 
+           tooltip="delete {{activity.name}}" 
+           tooltip-placement="right" 
+           tooltip-trigger="mouseenter"></i>
+      </li>
+    </ul>
+    <form ng-submit="addActivity()">
+      <input ng-model="newActivity" placeholder="New Activity"/>
+    </form>
+  </div>
+</div>

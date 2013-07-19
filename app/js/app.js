@@ -1,5 +1,5 @@
 'use strict';
-angular.module('volunteers', ['ui.bootstrap']).
+angular.module('volunteers', ['volunteerServices', 'ui.bootstrap']).
   config(['$routeProvider', function($routeProvider) {
   $routeProvider.
       when('/activities', {templateUrl: 'partials/activities.html',   controller: ActivityCtrl}).

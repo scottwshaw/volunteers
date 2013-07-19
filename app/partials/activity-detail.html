@@ -1,0 +1,30 @@
+<div class="container-fluid">
+  <div>
+    <h3>{{activity.name}}</h3>
+      <dd>
+        <dl class="dl-horizontal">
+          <dt>Owner</dt>
+          <dd>
+            <div ng-hide="editing">{{activity.owner.name}}</div>
+            <div ng-show="editing"><input ng-model="activity.owner.name"></div>
+          </dd>
+          <dt>Email</dt>
+          <dd>
+            <div ng-hide="editing">{{activity.owner.email}}</div>
+            <div ng-show="editing"><input ng-model="activity.owner.email"></div>
+          </dd>
+          <dt>Phone</dt>
+          <dd>
+            <div ng-hide="editing">{{activity.owner.phone}}</div>
+            <div ng-show="editing"><input ng-model="activity.owner.phone"></div>
+          </dd>
+        </dl>
+      </dd>
+    </dl>
+    <div class="footer">
+      <button class="btn btn-primary" ng-click="edit()" ng-hide="editing">Edit</button>
+      <button class="btn btn-primary" ng-click="save()" ng-show="editing">Done</button>
+      <a class="btn btn-warning cancel" href="#/activities">Back to activities</a>
+    </div>
+  </div>
+</div>

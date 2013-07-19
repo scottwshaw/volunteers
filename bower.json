@@ -1,0 +1,8 @@
+{
+    "name": "volunteers",
+    "version": "0.0.0",
+    "dependencies": {
+	"angular": "1.0.7",
+	"angular-bootstrap": "0.3.0",
+	"underscore": "1.5.1"}
+}

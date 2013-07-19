@@ -2,3 +2,4 @@ logs/*
 !.gitkeep
 *~
 *.log
+app/lib/components/*
