@@ -6,9 +6,12 @@ angular.module('volunteerServices', []).
     factory('Activities', function() {
 	var activitiesService = {};
 	activitiesService.activities = 
-	    [{"name": "Jaffle Smash", "owner": {"name": "Geoff", "email": "geoff@somewhere.com"}},
+	    [{"name": "Jaffle Smash", "owner": {"name": "Geoff", "email": "geoff@somewhere.com"},
+	     "timeSlots": [{"interval":"1:00-2:00", "volunteers":["Johnny", "Joey"], "notes":"Lock and load"},
+			   {"interval":"2:00-3:00", "volunteers":["Dee Dee", "Marky"], "notes":"Road to ruin"}]},
 	     {"name": "Curries", "owner": {"name": "Lisa"}},
 	     {"name": "Corn on the cob", "owner": {"name": "Shane", "phone": "0414653576"}}];
+
 	activitiesService.add = function(activity) {
 	    this.activities = _.union(this.activities, [activity]);
 	};

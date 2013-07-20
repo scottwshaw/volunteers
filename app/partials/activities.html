@@ -6,8 +6,8 @@
       <li class="activity" ng-repeat="activity in activities">
         <a href="#/activities/{{$index}}"
 	   popover="Owner: {{activity.owner.name}} {{activity.owner.phone}} {{activity.owner.email}}" 
-	   popover-placement="right" 
-	   popover-trigger="mouseenter">{{activity.name}}</a>
+	   popover-placement="right"
+           popover-trigger="mouseenter">{{activity.name}}</a>
         <i ng-click="removeActivity($index)" 
            class="icon-remove pull-right" 
            tooltip="delete {{activity.name}}" 

@@ -1,26 +1,43 @@
 <div class="container-fluid">
   <div>
     <h3>{{activity.name}}</h3>
+    <dl class="dl-horizontal">
+      <dt>Owner's Name</dt>
       <dd>
-        <dl class="dl-horizontal">
-          <dt>Owner</dt>
-          <dd>
-            <div ng-hide="editing">{{activity.owner.name}}</div>
-            <div ng-show="editing"><input ng-model="activity.owner.name"></div>
-          </dd>
-          <dt>Email</dt>
-          <dd>
-            <div ng-hide="editing">{{activity.owner.email}}</div>
-            <div ng-show="editing"><input ng-model="activity.owner.email"></div>
-          </dd>
-          <dt>Phone</dt>
-          <dd>
-            <div ng-hide="editing">{{activity.owner.phone}}</div>
-            <div ng-show="editing"><input ng-model="activity.owner.phone"></div>
-          </dd>
-        </dl>
+        <div ng-hide="editing">{{activity.owner.name}}</div>
+        <div ng-show="editing"><input ng-model="activity.owner.name"></div>
+      </dd>
+      <dt>Owner's Phone</dt>
+      <dd>
+        <div ng-hide="editing" ng-class="{'muted':!activity.owner.phone}">
+              {{activity.owner.phone || "no phone listed"}}
+        </div> 
+        <div ng-show="editing"><input ng-model="activity.owner.phone"></div>
+      </dd>
+      <dt>Owner's Email</dt>
+      <dd>
+        <div ng-hide="editing" ng-class="{'muted':!activity.owner.email}">
+              {{activity.owner.email || "no email listed"}}
+        </div>
+        <div ng-show="editing"><input ng-model="activity.owner.email"></div>
       </dd>
     </dl>
+    <table class= "table">
+      <thead>
+        <tr>
+          <th>Time Slot</th>
+          <th>Volunteer #1</th>
+          <th>Volunteer #2</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tr ng-repeat= "timeSlot in activity.timeSlots">
+        <td>{{timeSlot.interval}}</td>
+        <td>{{timeSlot.volunteers[0]}}</td>
+        <td>{{timeSlot.volunteers[1]}}</td>
+        <td>{{timeSlot.notes}}</td>
+      </tr>
+    </table>
     <div class="footer">
       <button class="btn btn-primary" ng-click="edit()" ng-hide="editing">Edit</button>
       <button class="btn btn-primary" ng-click="save()" ng-show="editing">Done</button>
