@@ -4,7 +4,7 @@
     <dl class="dl-horizontal">
       <dt>Owner's Name</dt>
       <dd>
-        <div ng-hide="editing">{{activity.owner.name}}</div>
+        <div ng-hide="editing" ng-class="{'muted':!activity.owner.name}">{{activity.owner.name || "no owner listed"}}</div>
         <div ng-show="editing"><input ng-model="activity.owner.name"></div>
       </dd>
       <dt>Owner's Phone</dt>

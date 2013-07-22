@@ -4,13 +4,18 @@
 
 angular.module('volunteerServices', []).
     factory('Activities', function() {
+
 	var activitiesService = {};
-	activitiesService.activities = 
-	    [{"name": "Jaffle Smash", "owner": {"name": "Geoff", "email": "geoff@somewhere.com"},
-	     "timeSlots": [{"interval":"1:00-2:00", "volunteers":["Johnny", "Joey"], "notes":"Lock and load"},
-			   {"interval":"2:00-3:00", "volunteers":["Dee Dee", "Marky"], "notes":"Road to ruin"}]},
-	     {"name": "Curries", "owner": {"name": "Lisa"}},
-	     {"name": "Corn on the cob", "owner": {"name": "Shane", "phone": "0414653576"}}];
+
+	var intervals = ["12:00-1:00","1:00-2:00","2:00-3:00","3:00-4:00","4:00-5:00","5:00-6:00"];
+
+	activitiesService.newActivity = function(activityName) {
+	    var newActivity = {"name": activityName};
+	    newActivity.timeSlots = _.map(intervals, function(interval) {
+		return {"interval":interval};
+	    });
+	    return newActivity;
+	};	    
 
 	activitiesService.add = function(activity) {
 	    this.activities = _.union(this.activities, [activity]);
@@ -26,6 +31,18 @@ angular.module('volunteerServices', []).
 	    var old = this.activities[index];
 	    this.activities = _.union(_.without(this.activities, old), [activity]);
 	};
+	var a1 = activitiesService.newActivity("Jaffle Smash");
+	a1.owner = {"name": "Geoff", "email": "geoff@somewhere.com"};
+	a1.timeSlots[0].volunteers = ["Johnny", "Joey"];
+	a1.timeSlots[0].notes = "Lock and load";
+	a1.timeSlots[1].volunteers = ["Dee Dee", "Marky"];
+	a1.timeSlots[1].notes = "Road to ruin";
+	var a2 = activitiesService.newActivity("Curries");
+	a2.owner = {"name": "Lisa"};
+	var a3 = activitiesService.newActivity("Corn on the cob");
+	a3.owner = {"name": "Shane", "phone": "0414653576"};
+
+	activitiesService.activities = [a1, a2, a3];	
 	return activitiesService;
     });
 	    
