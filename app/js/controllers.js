@@ -17,11 +17,15 @@ function ActivityCtrl($scope, Activities) {
     };
 };
 
-function ActivityDetailCtrl($scope, $routeParams, Activities) {
+function ActivityDetailCtrl($scope, $routeParams, Activities, Volunteers) {
     $scope.editing = false;
     $scope.activity = Activities.activities[$routeParams.activityIndex];
+    $scope.volunteers = Volunteers.volunteers;
     $scope.edit = function() {
 	$scope.editing = true;
+    };
+    $scope.cancel = function() {
+	$scope.editing = false;
     };
     $scope.save = function() {
 	Activities.replace($routeParams.activityIndex, $scope.activity);

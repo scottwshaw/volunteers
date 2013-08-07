@@ -33,9 +33,9 @@ angular.module('volunteerServices', []).
 	};
 	var a1 = activitiesService.newActivity("Jaffle Smash");
 	a1.owner = {"name": "Geoff", "email": "geoff@somewhere.com"};
-	a1.timeSlots[0].volunteers = ["Johnny", "Joey"];
+	a1.timeSlots[0].volunteers = {0:"Johnny", 1:"Joey"};
 	a1.timeSlots[0].notes = "Lock and load";
-	a1.timeSlots[1].volunteers = ["Dee Dee", "Marky"];
+	a1.timeSlots[1].volunteers = {0:"Dee Dee", 1:"Marky"};
 	a1.timeSlots[1].notes = "Road to ruin";
 	var a2 = activitiesService.newActivity("Curries");
 	a2.owner = {"name": "Lisa"};
@@ -44,5 +44,23 @@ angular.module('volunteerServices', []).
 
 	activitiesService.activities = [a1, a2, a3];	
 	return activitiesService;
+    }).
+    factory('Volunteers', function() {
+    	var volunteersService = {};
+    	volunteersService.volunteers = {"Rebecca Northeast":{}, 
+					"Rrrrosie":{}, 
+					"Bec":{}, 
+					"PJ":{}, 
+					"Johnny":{}, 
+					"Joey":{}, 
+					"Dee Dee":{}, 
+					"Marky":{}, 
+					"Fiona":{}};
+	return volunteersService;
     });
+
+
+
+
+	
 	    

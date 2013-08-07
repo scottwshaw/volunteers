@@ -33,15 +33,23 @@
       </thead>
       <tr ng-repeat= "timeSlot in activity.timeSlots">
         <td>{{timeSlot.interval}}</td>
-        <td>{{timeSlot.volunteers[0]}}</td>
-        <td>{{timeSlot.volunteers[1]}}</td>
+        <td>
+          <select ng-show="editing" ng-model="timeSlot.volunteers[0]" 
+                  ng-options="vname as vname for (vname, vdata) in volunteers"></select>
+          <div ng-hide="editing">{{timeSlot.volunteers[0]}}</div></td>
+        <td>
+          <select ng-show="editing" ng-model="timeSlot.volunteers[1]" 
+                  ng-options="vname as vname for (vname, vdata) in volunteers"></select>
+          <div ng-hide="editing">{{timeSlot.volunteers[1]}}</div></td>
+        </td>
         <td>{{timeSlot.notes}}</td>
       </tr>
     </table>
     <div class="footer">
       <button class="btn btn-primary" ng-click="edit()" ng-hide="editing">Edit</button>
-      <button class="btn btn-primary" ng-click="save()" ng-show="editing">Done</button>
-      <a class="btn btn-warning cancel" href="#/activities">Back to activities</a>
+      <button class="btn btn-primary" ng-click="save()" ng-show="editing">Save</button>
+      <a ng-hide="editing" class="btn btn-warning cancel" href="#/activities">Back to activities</a>
+      <button ng-show="editing" class="btn btn-warning cancel" ng-click="cancel()">Cancel</a>
     </div>
   </div>
 </div>
