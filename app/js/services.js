@@ -12,7 +12,7 @@ angular.module('volunteerServices', []).
 	activitiesService.newActivity = function(activityName) {
 	    var newActivity = {"name": activityName};
 	    newActivity.timeSlots = _.map(intervals, function(interval) {
-		return {"interval":interval};
+		return {"interval":interval, "volunteers":{0:"", 1:""}};
 	    });
 	    return newActivity;
 	};	    
