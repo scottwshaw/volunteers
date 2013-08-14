@@ -35,11 +35,11 @@
         <td>{{timeSlot.interval}}</td>
         <td>
           <select ng-show="editing" ng-model="timeSlot.volunteers[0]" 
-                  ng-options="vname as vname for (vname, vdata) in volunteers"></select>
+                  ng-options="v for v in availableVolunteers(timeSlot,0)"></select>
           <div ng-hide="editing">{{timeSlot.volunteers[0]}}</div></td>
         <td>
           <select ng-show="editing" ng-model="timeSlot.volunteers[1]" 
-                  ng-options="vname as vname for (vname, vdata) in volunteers"></select>
+                  ng-options="v for v in availableVolunteers(timeSlot,1)"></select>
           <div ng-hide="editing">{{timeSlot.volunteers[1]}}</div></td>
         </td>
         <td>{{timeSlot.notes}}</td>

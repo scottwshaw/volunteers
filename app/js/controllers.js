@@ -27,6 +27,27 @@ function ActivityDetailCtrl($scope, $routeParams, Activities, Volunteers) {
     $scope.cancel = function() {
 	$scope.editing = false;
     };
+    
+    var volunteersBookedInThisInterval = function(timeSlot) {
+	var alltimeslots = _.flatten(_.map(Activities.activities, function(a) {
+	    return a.timeSlots;
+	}));
+	var allthistime = 
+	    _.filter(alltimeslots, function(s) {
+    		return (s.interval == timeSlot.interval);
+	    });
+	
+	return _.compact(_.flatten(_.map(allthistime, function(t) {
+	    return _.values(t.volunteers);
+	})));
+    };
+
+    $scope.availableVolunteers = function(timeSlot, vindex) {
+	var used = volunteersBookedInThisInterval(timeSlot);
+	var avail = _.without.apply(null, [Volunteers.volunteers].concat(used));
+	return _.compact(avail.concat([timeSlot.volunteers[vindex]]));
+    }
+
     $scope.save = function() {
 	Activities.replace($routeParams.activityIndex, $scope.activity);
 	$scope.editing = false;

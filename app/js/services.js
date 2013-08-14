@@ -47,15 +47,15 @@ angular.module('volunteerServices', []).
     }).
     factory('Volunteers', function() {
     	var volunteersService = {};
-    	volunteersService.volunteers = {"Rebecca Northeast":{}, 
-					"Rrrrosie":{}, 
-					"Bec":{}, 
-					"PJ":{}, 
-					"Johnny":{}, 
-					"Joey":{}, 
-					"Dee Dee":{}, 
-					"Marky":{}, 
-					"Fiona":{}};
+    	volunteersService.volunteers = ["Rebecca Northeast", 
+					"Rrrrosie", 
+					"Bec", 
+					"PJ", 
+					"Johnny", 
+					"Joey", 
+					"Dee Dee", 
+					"Marky", 
+					"Fiona"];
 	return volunteersService;
     });
 
