@@ -53,3 +53,18 @@ function ActivityDetailCtrl($scope, $routeParams, Activities, Volunteers) {
 	$scope.editing = false;
     };
 };
+
+function LoginCtrl($scope, $rootScope, $location, Auth) {
+    Auth.logout();
+    $scope.emailAddress = "";
+    $scope.password = "";
+    $scope.login = function() {
+	Auth.login($scope.emailAddress);
+	$location.path($rootScope.nextPathAfterLogin);
+    };
+
+    // $scope.removeActivity = function(activityIndex) {
+    // 	Activities.removeAt(activityIndex);
+    // 	$scope.activities = Activities.activities;
+    // };
+};

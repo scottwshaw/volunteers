@@ -57,6 +57,21 @@ angular.module('volunteerServices', []).
 					"Marky", 
 					"Fiona"];
 	return volunteersService;
+    }).
+    factory('Auth', function($rootScope) {
+	return {
+            isLoggedIn: function(user) {
+		return $rootScope.user;
+            },
+	    login: function(username) {
+		if(!$rootScope.user) {
+		    $rootScope.user = username;
+		    }
+            }, 
+            logout: function() {
+		$rootScope.user = "";
+            }
+	}
     });
 
 
