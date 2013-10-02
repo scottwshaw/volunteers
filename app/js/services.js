@@ -3,7 +3,7 @@
 /* Services */
 
 angular.module('volunteerServices', []).
-    factory('Activities', function() {
+    factory('Activities', function(Users) {
 
 	var activitiesService = {};
 
@@ -32,15 +32,15 @@ angular.module('volunteerServices', []).
 	    this.activities = _.union(_.without(this.activities, old), [activity]);
 	};
 	var a1 = activitiesService.newActivity("Jaffle Smash");
-	a1.owner = {"name": "Geoff", "email": "geoff@somewhere.com"};
+	a1.owner = Users.user(0);
 	a1.timeSlots[0].volunteers = {0:"Johnny", 1:"Joey"};
 	a1.timeSlots[0].notes = "Lock and load";
 	a1.timeSlots[1].volunteers = {0:"Dee Dee", 1:"Marky"};
 	a1.timeSlots[1].notes = "Road to ruin";
 	var a2 = activitiesService.newActivity("Curries");
-	a2.owner = {"name": "Lisa"};
+	a2.owner = Users.user(1);
 	var a3 = activitiesService.newActivity("Corn on the cob");
-	a3.owner = {"name": "Shane", "phone": "0414653576"};
+	a3.owner = Users.user(2);
 
 	activitiesService.activities = [a1, a2, a3];	
 	return activitiesService;
@@ -58,16 +58,38 @@ angular.module('volunteerServices', []).
 					"Fiona"];
 	return volunteersService;
     }).
-    factory('Auth', function($rootScope) {
+    factory('Users', function() {
+	var usersService = {};
+
+	var users = [{"name": "Geoff", "email": "geoff@somewhere.com"},
+		    {"name": "Lisa"},
+		    {"name": "Shane", "phone": "0414653576"}]; 
+
+	usersService.users = function() {
+	    return users;
+	};
+	usersService.user = function(index) {
+	    return user[index];
+	};
+	usersService.findByEmail = function(candidateEmail) {
+	    return _.findWhere(users, {email : candidateEmail});
+	};
+	return usersService;
+    }).	
+    factory('Auth', function($rootScope,Users) {
 	return {
             isLoggedIn: function(user) {
 		return $rootScope.user;
             },
 	    login: function(username) {
 		if(!$rootScope.user) {
-		    $rootScope.user = username;
+		    if(Users.findByEmail(username)) {
+			$rootScope.user = username;
+			return true;
 		    }
-            }, 
+		}
+		return false;
+	    }, 
             logout: function() {
 		$rootScope.user = "";
             }
