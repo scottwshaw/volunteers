@@ -41,13 +41,13 @@ describe('service', function() {
 	    });
 	});
 
+	// TODO: These tests aren't great.  Will be refactoring to use mock backend
 	it('should return false on an unrecognised email address login', function() {
 	    spyOn(mockUsers, 'findByEmail').andReturn(null);
 	    expect(authSvc.login('blah@blahdeeblah.com')).toBeFalsy();
 	});
 
 	it('should return Truthy on a known email address login', function() {
-	    // TODO: This test isn't great.  Will be refactoring to use mock backend
 	    spyOn(mockUsers, 'findByEmail').andReturn({});
 	    expect(authSvc.login('')).toBeTruthy();
 	});

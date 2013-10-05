@@ -59,8 +59,13 @@ function LoginCtrl($scope, $rootScope, $location, Auth) {
     $scope.emailAddress = "";
     $scope.password = "";
     $scope.login = function() {
-	Auth.login($scope.emailAddress);
-	$location.path($rootScope.nextPathAfterLogin);
+	if(Auth.login($scope.emailAddress)) {
+	    $scope.loginFailed = false;
+	    $location.path($rootScope.nextPathAfterLogin);
+	} else {
+	    $scope.loginFailed = true;
+	    $location.path('/login');
+	}
     };
 
     // $scope.removeActivity = function(activityIndex) {

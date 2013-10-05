@@ -69,7 +69,7 @@ angular.module('volunteerServices', []).
 	    return users;
 	};
 	usersService.user = function(index) {
-	    return user[index];
+	    return users[index];
 	};
 	usersService.findByEmail = function(candidateEmail) {
 	    return _.findWhere(users, {email : candidateEmail});
