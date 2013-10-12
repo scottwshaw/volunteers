@@ -5,15 +5,32 @@
 describe('service', function() {
     describe('Users', function() {
 
-	var usersSvc;
+	var usersSvc, $httpBackend;
 	
 	beforeEach(function () {
 	    module('volunteers');
-	    inject(function(Users) {
+	    inject(function(Users, $injector) {
 		usersSvc = Users;
+		$httpBackend = $injector.get('$httpBackend');
+		$httpBackend.whenPOST('https://api.parse.com/1/users').respond(200, '');
 	    });
 	});
-	
+
+	afterEach(function() {
+	    $httpBackend.verifyNoOutstandingExpectation();
+	    $httpBackend.verifyNoOutstandingRequest();
+	});
+
+	it('should create a new user when passed the correct info', function() {
+	    var postData = {username: "testuser"};
+	    var headers = {"X-Parse-Application-Id": "UN11VGWAQdcPiQArIB15FktakOANyczXzFDw6eEd",
+			   "X-Parse-REST-API-Key": "BtPZpcL8cmAkCm9dqmI8wG5CCTELpqBLsP857qNB", 
+			   "Content-Type": "application/json"};
+	    $httpBackend.expectPOST('https://api.parse.com/1/users');
+	    usersSvc.add({"username": "testuser"});
+	    $httpBackend.flush();
+	});
+	    
 	it('should have a property called users that is an array', function() {
 	    expect(usersSvc.users()).toEqual(jasmine.any(Array));
 	});

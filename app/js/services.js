@@ -58,7 +58,8 @@ angular.module('volunteerServices', []).
 					"Fiona"];
 	return volunteersService;
     }).
-    factory('Users', function() {
+
+    factory('Users', function($http) {
 	var usersService = {};
 
 	var users = [{"name": "Geoff", "email": "geoff@somewhere.com"},
@@ -74,6 +75,10 @@ angular.module('volunteerServices', []).
 	usersService.findByEmail = function(candidateEmail) {
 	    return _.findWhere(users, {email : candidateEmail});
 	};
+
+	usersService.add = function(userData) {
+	    $http.post('https://api.parse.com/1/users',userData);
+	}
 	return usersService;
     }).	
     factory('Auth', function($rootScope,Users) {

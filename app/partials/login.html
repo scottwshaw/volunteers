@@ -1,7 +1,8 @@
 <div class="container-fluid">
-  <div class="alert alert-error" ng-show="loginFailed">
+  <div class="row">
+    <div class="alert alert-error span4 offset2" ng-show="loginFailed">
       Your username or password was not recognised
-    <a class="close" data-dismiss="alert">×</a>
+    </div>
   </div>
   <div class="span2 offset2">
     <form ng-submit="login()">
