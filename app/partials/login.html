@@ -4,13 +4,13 @@
       Your username or password was not recognised
     </div>
   </div>
-  <div class="span2 offset2">
+  <div class="span2 offset2" id="login-form">
     <form ng-submit="login()">
       <fieldset>
       <legend>Log in</legend>
-      <input type="text" ng-model="emailAddress" placeholder="email address"/>
-      <input type="password" ng-model="password" placeholder="password"/>
-      <input type="submit" value="Login" class="btn btn-primary"/>
+      <input id="email" type="text" ng-model="emailAddress" placeholder="email address"/>
+      <input id="password" type="password" ng-model="password" placeholder="password"/>
+      <input id="submit" type="submit" value="Login" class="btn btn-primary"/>
       </fieldset>
     </form>
   </div>
