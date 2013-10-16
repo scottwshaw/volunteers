@@ -67,9 +67,17 @@ function LoginCtrl($scope, $rootScope, $location, Auth) {
 	    $location.path('/login');
 	}
     };
+};
 
+function RegistrationCtrl($scope, $http) {
+    Auth.logout();
+    $scope.email = "";
+    $scope.password = "";
+    $scope.phone = "";
+    $scope.registerNewUser = function() {};
     // $scope.removeActivity = function(activityIndex) {
     // 	Activities.removeAt(activityIndex);
     // 	$scope.activities = Activities.activities;
     // };
 };
+

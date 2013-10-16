@@ -41,13 +41,12 @@ describe('service', function() {
 	       expect(usersSvc.findByEmail(nonexistantEmail)).toBeFalsy();
 	});
     });
+
     describe('Auth', function() {
 
 	var mockUsers, authSvc;
 	
 	beforeEach(function () {
-
-
 	    module('volunteers', function ($provide) {
 		mockUsers = {findByEmail: function() {}};		
 		$provide.value('Users', mockUsers);

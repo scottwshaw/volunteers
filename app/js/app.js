@@ -11,10 +11,13 @@ angular.module('volunteers', ['volunteerServices', 'volunteerDirectives', 'ui.bo
 	  when('/activities/:activityIndex', {
 	      templateUrl: 'partials/activity-detail.html', 
 	      controller: ActivityDetailCtrl}).
+	  when('/registration', {
+	      templateUrl: 'partials/registration.html', 
+	      controller: RegistrationCtrl}).
 	  otherwise({redirectTo: '/activities'});
   }]).run(['$rootScope', '$location', 'Auth', function ($rootScope, $location, Auth) {
        $rootScope.$on("$routeChangeStart", function (event, next, current) {
-	   if(!Auth.isLoggedIn() && ($location.path() != '/login')) {
+	   if(!Auth.isLoggedIn() && ($location.path() != '/login') && ($location.path() != '/registration')) {
 	       $rootScope.nextPathAfterLogin = $location.path();
                $location.path('/login');
 	   }
