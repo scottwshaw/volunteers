@@ -69,12 +69,15 @@ function LoginCtrl($scope, $rootScope, $location, Auth) {
     };
 };
 
-function RegistrationCtrl($scope, $http) {
-    Auth.logout();
+function RegistrationCtrl($scope, Users) {
     $scope.email = "";
     $scope.password = "";
     $scope.phone = "";
-    $scope.registerNewUser = function() {};
+    $scope.registerNewUser = function() {
+	return Users.add({email: $scope.email, 
+			  phone: $scope.phone,
+			  password: $scope.password});
+    };
     // $scope.removeActivity = function(activityIndex) {
     // 	Activities.removeAt(activityIndex);
     // 	$scope.activities = Activities.activities;

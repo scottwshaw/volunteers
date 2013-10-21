@@ -1,0 +1,16 @@
+<div class="container-fluid">
+  <div class="span2 offset2">
+   <div class="span2 offset2" id="registration-form">
+     <form ng-submit="registerNewUser()">
+       <fieldset>
+         <legend>Your Info</legend>
+         <input id="email" type="email" ng-model="email" placeholder="email address" required/>
+         <input id="password" type="password" ng-model="password" placeholder="password" required/>
+         <input id="confirm-password" type="password" ng-model="confirm-password" placeholder="confirm password" required/>
+         <input id="phone" type="phone" ng-model="phone" placeholder="phone number"/>
+         <input id="submit" type="submit" value="Register" class="btn btn-primary"/>
+       </fieldset>
+     </form>
+   </div>
+  </div>
+</div>
